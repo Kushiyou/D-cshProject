@@ -3,6 +3,11 @@
     <div class="container">
         <div class="side">
             <logo></logo>
+            <el-scrollbar class="scrollbar">
+                <el-menu background-color="#001529" text-color="white">
+                    <Menu :menuList="userStore.menuRouter"></Menu>
+                </el-menu>
+            </el-scrollbar>
         </div>
         <div class="main">
             <div class="top">dingbu</div>
@@ -15,7 +20,12 @@
  
 <script setup lang='ts'>
 import { ref, reactive } from 'vue'
+import useUserStroe from "@/store/moudle/user"
 import logo from "./logo/index.vue"
+import Menu from "./menu/index.vue";
+
+
+const userStore = useUserStroe()
 
 </script>
 <style scoped lang="scss">
@@ -30,6 +40,11 @@ import logo from "./logo/index.vue"
         width: $base-side-width;
         height: 100%;
         background-color: $base-side-color;
+
+        .scrollbar {
+            width: 100%;
+            height: calc(100% - $base-logo-height);
+        }
     }
 
     .main {
@@ -46,8 +61,8 @@ import logo from "./logo/index.vue"
             height: calc(100% - $base-top-height);
             width: 100%;
             background-color: $base-body-color;
-            overflow:auto;
-            padding:2%;
+            overflow: auto;
+            padding: 2%;
         }
     }
 }
