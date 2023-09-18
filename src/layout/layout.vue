@@ -12,7 +12,7 @@
         <div class="main">
             <div class="top">dingbu</div>
             <div class="body">
-                1111
+                <Main></Main>
             </div>
         </div>
     </div>
@@ -23,6 +23,8 @@ import { ref, reactive } from 'vue'
 import useUserStroe from "@/store/moudle/user"
 import logo from "./logo/index.vue"
 import Menu from "./menu/index.vue";
+import Main from "./main/index.vue";
+
 
 
 const userStore = useUserStroe()

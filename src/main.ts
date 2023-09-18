@@ -30,10 +30,6 @@ app.use(ElementPlus, {
 //使用路由
 app.use(router)
 //使用仓库
-console.log(111);
-
-console.log(pinia);
-
 app.use(pinia)
 
 app.mount('#app')
