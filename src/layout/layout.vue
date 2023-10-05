@@ -1,17 +1,20 @@
 <!--  -->
 <template>
     <div class="container">
-        <div class="side">
+        <div class="side" :class="{ flod: layOutFold.$state.flod ? true : false }">
             <logo></logo>
             <el-scrollbar class="scrollbar">
-                <el-menu background-color="#001529" text-color="white">
+                <el-menu :default-active="$route.path" :collapse="layOutFold.$state.flod ? true : false" unique-opened active-text-color="pink" background-color="#001529"
+                    text-color="white">
                     <Menu :menuList="userStore.menuRouter"></Menu>
                 </el-menu>
             </el-scrollbar>
         </div>
-        <div class="main">
-            <div class="top">dingbu</div>
-            <div class="body">
+        <div class="main" :class="{ flod: layOutFold.$state.flod ? true : false }">
+            <div class="top" :class="{ flod: layOutFold.$state.flod ? true : false }">
+                <TabBar></TabBar>
+            </div>
+            <div class="body" :class="{ flod: layOutFold.$state.flod ? true : false }">
                 <Main></Main>
             </div>
         </div>
@@ -24,10 +27,14 @@ import useUserStroe from "@/store/moudle/user"
 import logo from "./logo/index.vue"
 import Menu from "./menu/index.vue";
 import Main from "./main/index.vue";
-
+import TabBar from "./tabBar/index.vue";
+import { useRoute } from "vue-router";
+import useLayOutFlodStroe from '@/store/moudle/fold'
 
 
 const userStore = useUserStroe()
+const layOutFold = useLayOutFlodStroe()
+const $route = useRoute()
 
 </script>
 <style scoped lang="scss">
@@ -40,12 +47,17 @@ const userStore = useUserStroe()
 
     .side {
         width: $base-side-width;
+        overflow: hidden;
         height: 100%;
         background-color: $base-side-color;
+        transition: all 0.3s;
 
         .scrollbar {
             width: 100%;
             height: calc(100% - $base-logo-height);
+        }
+        &.flod{
+            width: $min-side-width;
         }
     }
 
@@ -65,6 +77,9 @@ const userStore = useUserStroe()
             background-color: $base-body-color;
             overflow: auto;
             padding: 2%;
+        }
+        &.flod{
+            width: calc(100% - $min-side-width);
         }
     }
 }

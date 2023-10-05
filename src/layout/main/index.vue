@@ -1,26 +1,29 @@
 <!--  -->
 <template>
-    <router-view v-slot="{Component}">
-        <transition name="fade">
-            <component :is="Component"></component>
+    <router-view v-slot="{ Component }">
+        <transition name="bounce">
+            <component :is="Component" />
         </transition>
     </router-view>
     <!-- <router-view></router-view> -->
 </template>
 
 <script setup lang='ts'>
-//import { ref,reactive } from 'vue'
+/* import { ref,reactive,Transition  } from 'vue' */
 
 </script>
 <style scoped>
 /* @import url(); 引入css类 */
-.fade-enter-from{
-    opacity:0;
+.bounce-enter-from {
+    opacity: 0;
 }
-.fade-enter-active{
+
+.bounce-enter-active,
+.bounce-leave-active {
     transition: all 1s;
 }
-.fade-enter-to{
-    opacity:1;
+
+.bounce-enter-to {
+    opacity: 1;
 }
 </style>

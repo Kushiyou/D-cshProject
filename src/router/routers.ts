@@ -6,11 +6,12 @@ export const constantRouter = [
     {
         path:'/',
         name:'layout',
+        redirect:'/home',
         component:()=>import('@/layout/layout.vue'),
         meta:{
             title:'首页',
             show:true,
-            icon:'Home'
+            icon:'HomeFilled'
         },
         children:[{
             path:'/home',

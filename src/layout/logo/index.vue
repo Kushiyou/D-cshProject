@@ -2,12 +2,15 @@
 <template>
 <div class="logo_container" v-if="setting.isShow">
     <img :src='setting.logo' alt="logo">
-    <p>{{ setting.title }}</p>
+    <p v-show="!layOutFold.$state.flod">{{ setting.title }}</p>
 </div>
 </template>
 
 <script setup lang='ts'>
+import useLayOutFlodStroe from '@/store/moudle/fold'
 import setting from '@/setting'
+
+const layOutFold = useLayOutFlodStroe()
 
 </script>
 <style scoped lang="scss">
