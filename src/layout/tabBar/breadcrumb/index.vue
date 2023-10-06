@@ -6,8 +6,12 @@
         </div>
         <div class="breadcrumb">
             <el-breadcrumb separator-icon="ArrowRight">
-                <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
-                <el-breadcrumb-item>promotion management</el-breadcrumb-item>
+                <el-breadcrumb-item v-for="(item,index) in $route.matched" :key="index" v-show="item.meta.title" :to="item.path">
+                <el-icon>
+                    <component :is="item.meta.icon"></component>
+                </el-icon>
+                <span style="margin: 0 5px;">{{item.meta.title}}</span>
+                </el-breadcrumb-item>
             </el-breadcrumb>
         </div>
     </div>
@@ -16,7 +20,9 @@
 <script setup lang='ts'>
 import { ref, reactive } from 'vue'
 import useLayOutFlodStroe from '@/store/moudle/fold'
+import { useRoute } from 'vue-router';
 
+const $route = useRoute()
 const layOutFlod = useLayOutFlodStroe()
 
 let changeFlod = ()=>{

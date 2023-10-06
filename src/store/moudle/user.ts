@@ -9,8 +9,10 @@ let useUserStroe = defineStore('User', {
     //小仓库存储数据的地方
     state: (): userState => {
         return {
-            token: '',
-            menuRouter:constantRouter
+            token: '1',
+            menuRouter:constantRouter,
+            userName:'2',
+            avatar:'3' 
         }
     },
     getters: {

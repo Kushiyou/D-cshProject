@@ -44,12 +44,13 @@ import { reqLogin } from '../../api/user/index'
 //封装的根据时间获取欢迎语
 import welcomenWord from '../../utils/time'
 //引入vue-router
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 //引入user小仓库
 import useUserStore from '../../store/moudle/user'
 import { resLoginData } from '@/api/user/type'
 let userStore = useUserStore()
 let $router = useRouter()
+let $route = useRoute()
 
 const ruleFormRef = ref<FormInstance>()
 
@@ -102,8 +103,10 @@ const login = async () => {
                 message: '欢迎回来 ',
                 title: `${welcomenWord},${res?.data?.username}欢迎您!`
             })
+            //判断一下退出登录有没有重新回到页面的query参数
+            let redirect:any = $route.query.redirect
             $router.push({
-                name: 'home'
+                path: redirect||'/'
             })
         }
     } catch (error: any) {

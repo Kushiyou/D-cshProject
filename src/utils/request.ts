@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {ElMessage} from 'element-plus'
+import useUserStroe from '@/store/moudle/user';
 
 const request = axios.create({
     baseURL: '/api',
@@ -9,6 +10,11 @@ const request = axios.create({
 
   //请求拦截器
   request.interceptors.request.use((config)=>{
+    let userStroe = useUserStroe()
+    //每个请求都要把token设置上去
+    if(userStroe.token){
+      config.headers.token = userStroe.token
+    }
     return config
   })
 

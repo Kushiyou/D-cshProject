@@ -9,9 +9,9 @@ export const constantRouter = [
         redirect:'/home',
         component:()=>import('@/layout/layout.vue'),
         meta:{
-            title:'首页',
+            title:'',
             show:true,
-            icon:'HomeFilled'
+            icon:''
         },
         children:[{
             path:'/home',
@@ -69,6 +69,7 @@ export const constantRouter = [
     {
         path:'/acl',
         name:'Acl',
+        redirect:'/user',
         component:()=>import('@/layout/layout.vue'),
         meta:{
             title:'权限管理',
@@ -111,6 +112,7 @@ export const constantRouter = [
         path:'/product',
         name:'Product',
         component:()=>import('@/layout/layout.vue'),
+        redirect:'/trademark',
         meta:{
             title:'商品管理',
             show:true,
