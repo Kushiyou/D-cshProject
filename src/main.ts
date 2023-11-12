@@ -23,6 +23,8 @@ import grobalComponents from '@/components/index'
 //挂载自定义全局组件 是插件需要使用use
 app.use(grobalComponents)
 
+//引入路由鉴权
+import './premission'
 app.use(ElementPlus, {
     locale: zhCn
 })
